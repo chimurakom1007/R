@@ -86,10 +86,89 @@ x = NULL
 a1<-c(3.1,1)
 a2<-c(4,24,5)
 a3<-c(9,9,3)
-
+wqd
 x<-cbind(c(1,2,3),c(3,4,5),c(1,2,7))
 x
 b1<-matrix(c(3,1,1),3,1)
 b2<-matrix(c(4,24,5),3,1)
 b3<-matrix(c(4,6,5),3,1)
 cbind(b1,b2,b3)
+
+names(core.d)
+length(core.d)
+View(core.d)
+dim(core.d)
+
+core.d[,c(2,3)]
+core.d[,c(-2:-3)]
+core.d[,-2:-3]
+diff(core.d$no1)
+
+par(mfcol=c(1,1))
+barplot(table(core.d$no1[[1]]))
+hist(core.d$no1,breaks = seq(0,5,1),col = "red")
+x11()
+plot(as.factor(core.d$sex[,1]))
+qqnorm(scale(r1))
+core.2d<-read.csv("/Users/naoki/Desktop/data.csv", fileEncoding = "Shift_JIS")
+view(core.2d)
+
+qqnorm(scale(r2))
+qqnorm(r2)
+abline(0,1)
+hist(r2,freq=F,breaks=seq(-0.1,0.1,by=0.01))
+r1=diff(data2.d[,1])/data2.d[-121,1]
+r2=diff(log(data2.d[,1]))
+data2.d=core.2d[,-1]
+data.d<-core.2d
+hist(r2,freq=F,breaks=seq(-0.1,0.1,by=0.01))
+x=runif(1000)
+x
+y=qnorm(x)
+qqnorm(y)
+abline(0,1)
+
+source("/Users/naoki/Desktop/test.d.R",encoding="cp932")
+ls()
+rm(xx)
+rm(yy)
+attach(test.d)
+help(attach)
+bb1=cov(xx,yy)/var(xx)
+aa1=mean(yy)-bb1*mean(xx)
+bb2=(t(xx)%*%yy-length(xx)*mean(xx)*mean(yy))/(sum(xx^2)-length(xx)*mean(xx)^2)
+aa2=mean(yy)-bb2*mean(xx)
+
+jj=function(par){
+  sum((test.d$yy-par[1]-par[2]*test.d$xx)^2)
+}
+optim(c(0,1),fn=jj)
+help(optim)
+
+x1 <- x <- seq(-3,3,0.1)
+x2 <- seq(7,13,0.1)
+y <- x1^2+(x2-10)^2
+#求めたいパラメータはベクトルで与える
+bar <- function(x){
+  (x[1])^2+(x[2]-10)^2
+}
+
+optim(c(-1,1),bar)
+
+par(mfcol=c(1,2))
+beta=NULL
+for(i in 1:100){
+  xx=runif(50,-1,1)
+  ee=rnorm(50)
+  yy=10+0.5*xx+ee
+  beta[i]=cov(xx,yy)/var(xx)}
+
+names(economics)
+
+hist(beta,freq=F)
+dim(economics)
+install.packages("rgl")                # パッケージのインストール
+library(rgl)                           # パッケージの呼び出し
+rgl.open()                            # デバイスの起動
+example(rgl.surface)                   # 作図
+for(i in 1:360) rgl.viewpoint(i,i/4)   # 図形の回転
