@@ -108,4 +108,4 @@ Ito.d<-read.csv("/Users/naoki/Desktop/R/R/Ito.csv", fileEncoding = "Shift_JIS")
 library(rpart)
 data("kyphosis")
 head(kyphosis)
-
+wwfwf
