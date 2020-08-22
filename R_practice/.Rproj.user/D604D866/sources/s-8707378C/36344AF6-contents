@@ -1,0 +1,13 @@
+diag_sir <- dagify(I ~ S, R ~ I,
+                   labels = c("S" = "感受性", "I" = "感染", "R" = "回復"),
+                   coords = list(x = c(S = 0, I = .1, R = .2), y = c(S = 0, I = 0, R = 0))
+) %>% tidy_dagitty() %>% mutate(label_edge = c("gamma", "beta", NA))
+diag_sir %>% ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_node(size = 30) +
+  geom_dag_edges(edge_width = 2, arrow_directed = grid::arrow(
+    length = grid::unit(.1, "npc"), type = "closed")) +
+  geom_dag_text(aes(label = label)) +
+  geom_label(aes(x = (x + xend)/2, y = (y + yend)/2, label = label_edge), parse = T, size = 10) +
+  theme_dag_blank()
+
+

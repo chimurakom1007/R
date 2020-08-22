@@ -1,0 +1,12 @@
+getwd()
+read_file('/Users/naoki/Desktop/R/R_practice/import_practice2.txt')
+library(readr)
+a<-read_csv('import_practice2.txt')
+a
+?dbl
+ggplot2::aes(a)
+tail(a)
+
+a<-read_csv('import_practice2.txt',
+            col_types = 'iccc')
+a
